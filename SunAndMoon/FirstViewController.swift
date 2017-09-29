@@ -18,8 +18,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +35,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! toDoCellTableViewCell
+        cell.toDoTask.text = toDoMorning[indexPath.row]
         return cell
     }
 

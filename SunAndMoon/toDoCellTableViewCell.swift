@@ -12,6 +12,8 @@ class toDoCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var toDoTask: UILabel!
     
+    @IBOutlet weak var checkButton: UIButton!
+    var checked = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,10 @@ class toDoCellTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func tick(_ sender: Any) {
+        checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Tick Box-50"))
+        checked = true
     }
 
 }

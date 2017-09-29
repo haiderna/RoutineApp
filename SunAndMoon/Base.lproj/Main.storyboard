@@ -50,9 +50,12 @@
                                                     <rect key="frame" x="8" y="-3" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="icons8-Unchecked Checkbox-50"/>
+                                                    <connections>
+                                                        <action selector="tick:" destination="rOZ-D0-gzW" eventType="touchUpInside" id="kEf-y1-ptD"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njz-dM-Jin">
-                                                    <rect key="frame" x="66" y="12" width="42" height="21"/>
+                                                    <rect key="frame" x="66" y="12" width="256" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -61,6 +64,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkButton" destination="PHQ-LE-BB4" id="e3w-IF-TDA"/>
                                             <outlet property="toDoTask" destination="Njz-dM-Jin" id="jdr-X9-YuV"/>
                                         </connections>
                                     </tableViewCell>
