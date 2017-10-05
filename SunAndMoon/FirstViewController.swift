@@ -9,7 +9,9 @@ import UIKit
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    var addedTask = " "
     
+    @IBOutlet weak var tabView: UITableView!
     
     public static var toDoMorning = ["medicine", "brush teeth", "skincare", "contacts", "sunscreen", "makeup", "refill water bottle"]
     
@@ -19,6 +21,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         toDoCellTableViewCell.identity = "Sun"
+        print("reloaded")
+        reloadInputViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +57,30 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             tableView.reloadData()
         
         }
+        
+    }
+    
+    
+    @IBAction func addTaskDay(_ sender: Any) {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Add", message: "Add another task", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "New task here"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+            self.addedTask = (textField?.text)!
+            FirstViewController.toDoMorning.append(self.addedTask)
+            self.tabView.reloadData()
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
 
  
