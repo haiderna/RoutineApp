@@ -10,6 +10,8 @@ import UIKit
 
 class toDoCellTableViewCell: UITableViewCell {
 
+    public static var identity = "nothing"
+    
     @IBOutlet weak var toDoTask: UILabel!
     
     @IBOutlet weak var checkButton: UIButton!
@@ -18,6 +20,7 @@ class toDoCellTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         
     }
 
@@ -29,6 +32,30 @@ class toDoCellTableViewCell: UITableViewCell {
     @IBAction func tick(_ sender: Any) {
         checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Tick Box-50"))
         checked = true
+        
+        
+        
+        if toDoCellTableViewCell.identity == "Sun" {
+            FirstViewController.checkedOff+=1
+            print("first")
+        
+        }
+        
+        if toDoCellTableViewCell.identity == "Moon" {
+            SecondViewController.checkedOffNight+=1
+            print("second")
+            
+        }
+        
+        if (FirstViewController.checkedOff == FirstViewController.toDoMorning.count) {
+            print("finished morning routine")
+        }
+        
+        if (SecondViewController.checkedOffNight == SecondViewController.toDoNight.count) {
+            print("finished Night routine")
+        }
+
     }
+    
 
 }
