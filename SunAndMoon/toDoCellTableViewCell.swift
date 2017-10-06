@@ -33,8 +33,6 @@ class toDoCellTableViewCell: UITableViewCell {
         checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Tick Box-50"))
         checked = true
         
-        
-        
         if toDoCellTableViewCell.identity == "Sun" {
             FirstViewController.checkedOff+=1
             print("first")
@@ -49,10 +47,36 @@ class toDoCellTableViewCell: UITableViewCell {
         
         if (FirstViewController.checkedOff == FirstViewController.toDoMorning.count) {
             print("finished morning routine")
+            let finishedTasks = UIAlertController(title: "Finished!", message: "You completed your morning routine!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            finishedTasks.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: { (action) in finishedTasks.dismiss(animated: true, completion: nil)
+                
+            }))
+            UIApplication.shared.keyWindow?.rootViewController?.present(finishedTasks, animated: true, completion: nil)
+            FirstViewController.checkedOff = 0
+            
+            for each in FirstViewController.cells {
+                each.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+            }
+            
+            
+            
         }
         
         if (SecondViewController.checkedOffNight == SecondViewController.toDoNight.count) {
             print("finished Night routine")
+            let finishedTasks = UIAlertController(title: "Finished!", message: "You completed your night routine!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            finishedTasks.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: { (action) in finishedTasks.dismiss(animated: true, completion: nil)
+                
+            }))
+            UIApplication.shared.keyWindow?.rootViewController?.present(finishedTasks, animated: true, completion: nil)
+            SecondViewController.checkedOffNight = 0
+            for each in SecondViewController.nightCells {
+                each.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+            }
+            
+            
         }
 
     }

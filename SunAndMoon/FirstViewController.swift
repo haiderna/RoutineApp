@@ -14,14 +14,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tabView: UITableView!
     
     public static var toDoMorning = ["medicine", "brush teeth", "skincare", "contacts", "sunscreen", "makeup", "refill water bottle"]
+    public static var cells = [toDoCellTableViewCell]()
     
     public static var checkedOff = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         toDoCellTableViewCell.identity = "Sun"
-        print("reloaded")
         reloadInputViews()
     }
     
@@ -46,7 +45,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! toDoCellTableViewCell
         cell.toDoTask.text = FirstViewController.toDoMorning[indexPath.row]
-        
+        FirstViewController.cells.append(cell)
         return cell
     }
     

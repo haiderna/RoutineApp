@@ -522,6 +522,7 @@
 				A41DEB5A1F7C5842009BBC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A41DEB5B1F7C5842009BBC3E /* Build configuration list for PBXNativeTarget "SunAndMoonTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +531,7 @@
 				A41DEB5D1F7C5842009BBC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A41DEB5E1F7C5842009BBC3E /* Build configuration list for PBXNativeTarget "SunAndMoonUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +540,7 @@
 				A41DEB601F7C5842009BBC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

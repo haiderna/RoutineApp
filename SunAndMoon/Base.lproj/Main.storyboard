@@ -172,7 +172,16 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="b6F-cT-FOf"/>
+                    <navigationItem key="navigationItem" id="b6F-cT-FOf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JVr-eg-k7d">
+                            <connections>
+                                <action selector="NightAdd:" destination="8rJ-Kc-sve" id="59V-Fr-q3A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="NightTable" destination="VeH-dj-7cE" id="9L8-Lj-6AE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
