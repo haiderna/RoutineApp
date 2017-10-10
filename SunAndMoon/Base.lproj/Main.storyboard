@@ -196,6 +196,7 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="gqR-C5-h6a" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -206,11 +207,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--First-->
+        <!--Day-->
         <scene sceneID="jw1-O1-jRN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gqR-C5-h6a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Day" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Bs-Q6-vde">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -225,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Second-->
+        <!--Night-->
         <scene sceneID="s4C-5X-bo4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jwv-sp-EbC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Night" image="second" selectedImage="moonEdit" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fEe-Du-UpZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -248,6 +249,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="icons8-Unchecked Checkbox-50" width="50" height="50"/>
+        <image name="moonEdit" width="50" height="50"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

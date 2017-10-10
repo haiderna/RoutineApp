@@ -30,15 +30,17 @@ class toDoCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func tick(_ sender: Any) {
+        if checked == true {
+            //do nothing
+            print("pic should not change")
+        }
+        else {
         checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Tick Box-50"))
         checked = true
-        
         if toDoCellTableViewCell.identity == "Sun" {
             FirstViewController.checkedOff+=1
             print("first")
-        
         }
-        
         if toDoCellTableViewCell.identity == "Moon" {
             SecondViewController.checkedOffNight+=1
             print("second")
@@ -57,10 +59,9 @@ class toDoCellTableViewCell: UITableViewCell {
             
             for each in FirstViewController.cells {
                 each.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+                each.checked = false
             }
-            
-            
-            
+      
         }
         
         if (SecondViewController.checkedOffNight == SecondViewController.toDoNight.count) {
@@ -74,12 +75,16 @@ class toDoCellTableViewCell: UITableViewCell {
             SecondViewController.checkedOffNight = 0
             for each in SecondViewController.nightCells {
                 each.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+                each.checked = false
             }
             
             
         }
 
-    }
+        }}
     
+    
+
+
 
 }
