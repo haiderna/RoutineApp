@@ -6,11 +6,14 @@
 //  Copyright © 2017 Najia Haider. All rights reserved.
 
 import UIKit
+import UserNotifications
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    var addedTask = " "
     
+    
+    var addedTask = " "
+    let datePicker = UIDatePicker()
     @IBOutlet weak var tabView: UITableView!
     
     public static var toDoMorning = ["medicine", "brush teeth", "skincare", "contacts", "sunscreen", "makeup", "refill water bottle"]
@@ -22,6 +25,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         toDoCellTableViewCell.identity = "Sun"
         reloadInputViews()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in })
+        //Notification()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,7 +87,52 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(alert, animated: true, completion: nil)
     }
 
- 
+    func Notification(){
+        let calendar = NSCalendar.current
+        let date = NSDateComponents()
+        date.hour = 13
+        date.minute = 02
+        
+        let sounder = UNNotificationSound.default()
+        let content = UNMutableNotificationContent()
+        content.title = "Morning Routine"
+        content.subtitle = "Morning Routine Time"
+        content.body = "Get the morning routine done! "
+        content.badge = 1
+        content.sound = sounder
+       
+      //  let components = Calendar.current.dateComponents([.minute, .hour], from:self.)
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 16
+        dateComponents.minute = 36
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+      
+    }
+    
+    
+    func toolBarDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action:#selector (donePressed) )
+        toolbar.setItems([doneButton], animated: false)
+        //getTime.inputAccessoryView = toolbar
+       // getTexttxt.inputAccessoryView = toolbar
+        //getTexttxt.inputView = datePicker
+      //  datePickerTxtTest.inputView = datePicker
+        
+    
+    }
+    func donePressed() {
+    print("was pressed")
+        print("\(datePicker.date)")
+    }
+    
+    
     
     
 }

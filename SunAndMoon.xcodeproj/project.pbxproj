@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41262491F9804E500448BD3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41262481F9804E500448BD3 /* Notifications.swift */; };
+		A412624D1F994AE700448BD3 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A412624C1F994AE700448BD3 /* Timers.swift */; };
 		A41DEB321F7C5842009BBC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DEB311F7C5842009BBC3E /* AppDelegate.swift */; };
 		A41DEB341F7C5842009BBC3E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DEB331F7C5842009BBC3E /* FirstViewController.swift */; };
 		A41DEB361F7C5842009BBC3E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DEB351F7C5842009BBC3E /* SecondViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A41262481F9804E500448BD3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A412624C1F994AE700448BD3 /* Timers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timers.swift; path = ../Timers.swift; sourceTree = "<group>"; };
 		A41DEB2E1F7C5842009BBC3E /* SunAndMoon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunAndMoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41DEB311F7C5842009BBC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A41DEB331F7C5842009BBC3E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -101,8 +105,10 @@
 		A41DEB301F7C5842009BBC3E /* SunAndMoon */ = {
 			isa = PBXGroup;
 			children = (
+				A412624C1F994AE700448BD3 /* Timers.swift */,
 				A41DEB311F7C5842009BBC3E /* AppDelegate.swift */,
 				A41DEB331F7C5842009BBC3E /* FirstViewController.swift */,
+				A41262481F9804E500448BD3 /* Notifications.swift */,
 				A41DEB351F7C5842009BBC3E /* SecondViewController.swift */,
 				A41DEB371F7C5842009BBC3E /* Main.storyboard */,
 				A41DEB611F7C5FD3009BBC3E /* toDoCellTableViewCell.swift */,
@@ -268,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A41262491F9804E500448BD3 /* Notifications.swift in Sources */,
+				A412624D1F994AE700448BD3 /* Timers.swift in Sources */,
 				A41DEB361F7C5842009BBC3E /* SecondViewController.swift in Sources */,
 				A41DEB321F7C5842009BBC3E /* AppDelegate.swift in Sources */,
 				A41DEB341F7C5842009BBC3E /* FirstViewController.swift in Sources */,

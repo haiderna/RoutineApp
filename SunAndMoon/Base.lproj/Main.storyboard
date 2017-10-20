@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hYR-Mr-aDG">
-                                <rect key="frame" x="0.0" y="79" width="369" height="539"/>
+                                <rect key="frame" x="0.0" y="79" width="369" height="490"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -84,6 +84,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BWn-rC-iW3">
+                        <barButtonItem key="leftBarButtonItem" title="Set Time" id="QpB-So-wDR">
+                            <connections>
+                                <segue destination="6Kk-OQ-968" kind="show" id="j87-DW-GyT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Pp-ss-kJW">
                             <connections>
                                 <action selector="addTaskDay:" destination="9pv-A4-QxB" id="A3E-pw-O9v"/>
@@ -172,13 +177,20 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="b6F-cT-FOf">
+                        <barButtonItem key="leftBarButtonItem" title="Set Time" id="NHE-N5-tj8">
+                            <connections>
+                                <segue destination="6Kk-OQ-968" kind="show" id="7ff-II-6qH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JVr-eg-k7d">
                             <connections>
                                 <action selector="NightAdd:" destination="8rJ-Kc-sve" id="59V-Fr-q3A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="NightTable" destination="VeH-dj-7cE" id="9L8-Lj-6AE"/>
                     </connections>
@@ -186,6 +198,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
+        </scene>
+        <!--Timers-->
+        <scene sceneID="pKx-De-y5d">
+            <objects>
+                <viewController id="6Kk-OQ-968" customClass="Timers" customModule="SunAndMoon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HZy-SY-Coj"/>
+                        <viewControllerLayoutGuide type="bottom" id="YuJ-7p-Xy2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qO-vD-dAi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="IT4-iK-zD6">
+                                <rect key="frame" x="0.0" y="211" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="530139682.338543">
+                                    <!--2017-10-19 21:01:22 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-zd-bz7">
+                                <rect key="frame" x="163" y="468" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="whichTimer:" destination="6Kk-OQ-968" eventType="touchUpInside" id="RBy-dx-G3G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="submitTime" destination="hgW-zd-bz7" id="CeO-7E-h3g"/>
+                        <outlet property="timer" destination="IT4-iK-zD6" id="0cX-wh-dDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLb-wZ-gbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="63"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -252,4 +303,7 @@
         <image name="moonEdit" width="50" height="50"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="j87-DW-GyT"/>
+    </inferredMetricsTieBreakers>
 </document>
