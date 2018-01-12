@@ -14,28 +14,40 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var addedTask = " "
     let datePicker = UIDatePicker()
-    @IBOutlet weak var tabView: UITableView!
+@IBOutlet weak var tabView: UITableView!
+    var starter = true
     
-    public static var toDoMorning = ["medicine", "brush teeth", "skincare", "contacts", "sunscreen", "makeup", "refill water bottle"]
+    var toDoMorning = ["medicine", "brush teeth", "skincare", "contacts", "sunscreen", "makeup", "refill water bottle"]
+   public static var checkedArray = [false, false, false, false, false, false, false]
+   
     public static var cells = [toDoCellTableViewCell]()
+    var boolArray = [Bool]()
     
     public static var checkedOff = 0
+    var cellCheck = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         toDoCellTableViewCell.identity = "Sun"
+        print(FirstViewController.cells.isEmpty)
         reloadInputViews()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in })
-        //Notification()
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         toDoCellTableViewCell.identity = "Sun"
+        if let x = UserDefaults.standard.object(forKey: "dayArray") as? String
+        {
+            print("idk what goes here")
+            print(toDoMorning)
+            toDoMorning = [x]
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     
@@ -44,22 +56,57 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FirstViewController.toDoMorning.count
+        return FirstViewController.cells.count
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! toDoCellTableViewCell
-        cell.toDoTask.text = FirstViewController.toDoMorning[indexPath.row]
-        FirstViewController.cells.append(cell)
-        return cell
+
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! toDoCellTableViewCell
+        cell.setDayRoutine(day: toDoMorning)
+        cell.toDoTask.text = FirstViewController.cells[indexPath.row].task
+        print(FirstViewController.cells[indexPath.row].checked)
+//        cell = FirstViewController.cells[indexPath.row]
+//        cell.toDoTask.text = FirstViewController.cells[indexPath.row].task
+//        cell.checkButton.backgroundColor = FirstViewController.cells[indexPath.row].backgroundColor
+        //FirstViewController.cells.append(cell)
+//        if checkedArray.count > 0 {
+//            if checkedArray[indexPath.row] == true {
+//                cell.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Tick Box-50"))
+//            } else {
+//                cell.checkButton.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+//            }
+//
+//        }
+            return cell
+  
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        starter = false
         if editingStyle == UITableViewCellEditingStyle.delete {
-            FirstViewController.toDoMorning.remove(at: indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! toDoCellTableViewCell
+            print(cell.checked)
+            print("---")
+            
+            if cell.checked == true {
+                FirstViewController.checkedOff-=1
+                print(toDoMorning.count)
+                print(FirstViewController.checkedOff)
+                
+            }
+            
+            toDoMorning.remove(at: indexPath.row)
+            FirstViewController.checkedArray.remove(at:indexPath.row)
+            //FirstViewController.cells.remove(at: indexPath.row)
+            print(FirstViewController.cells.count)
+            for each in FirstViewController.cells {
+                print(each.checked)
+                FirstViewController.checkedArray.append(each.checked)
+            }
+            FirstViewController.cells.removeAll()
+            UserDefaults.standard.set(toDoMorning, forKey: "dayArray")
             tableView.reloadData()
-        
         }
         
     }
@@ -79,58 +126,25 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             print("Text field: \(textField?.text)")
             self.addedTask = (textField?.text)!
-            FirstViewController.toDoMorning.append(self.addedTask)
+            //self.toDoMorning.append(self.addedTask)
+            //FirstViewController.checkedArray.append(false)
+            var cell = toDoCellTableViewCell()
+            cell.task = self.addedTask
+            print(cell.checkButton)
+            cell.checkButton?.backgroundColor = UIColor.init(patternImage:#imageLiteral(resourceName: "icons8-Unchecked Checkbox-50"))
+            print(cell.checkButton)
+            FirstViewController.cells.append(cell)
+            print(FirstViewController.cells.count)
+           // print(FirstViewController.cells[0].task)
+            UserDefaults.standard.set(self.toDoMorning, forKey: "dayArray")
             self.tabView.reloadData()
+            print(FirstViewController.cells)
         }))
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
 
-    func Notification(){
-        let calendar = NSCalendar.current
-        let date = NSDateComponents()
-        date.hour = 13
-        date.minute = 02
-        
-        let sounder = UNNotificationSound.default()
-        let content = UNMutableNotificationContent()
-        content.title = "Morning Routine"
-        content.subtitle = "Morning Routine Time"
-        content.body = "Get the morning routine done! "
-        content.badge = 1
-        content.sound = sounder
-       
-      //  let components = Calendar.current.dateComponents([.minute, .hour], from:self.)
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = 16
-        dateComponents.minute = 36
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-      
-    }
-    
-    
-    func toolBarDatePicker() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action:#selector (donePressed) )
-        toolbar.setItems([doneButton], animated: false)
-        //getTime.inputAccessoryView = toolbar
-       // getTexttxt.inputAccessoryView = toolbar
-        //getTexttxt.inputView = datePicker
-      //  datePickerTxtTest.inputView = datePicker
-        
-    
-    }
-    func donePressed() {
-    print("was pressed")
-        print("\(datePicker.date)")
-    }
     
     
     
